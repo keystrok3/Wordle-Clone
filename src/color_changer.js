@@ -1,18 +1,27 @@
 
-
+// Compares the letters of a word with a set of characters
+// of similar length and returns another list with
+// 'green' if the corresponding letter in the attempt set
+// matches the word, 'yellow' if not but letter is in the word,
+// and 'grey' if letter is not in the word
 const changeColour = (correct_word, attempt) => {
+
+    if(attempt.length === 0) return;
+
     let word = correct_word.split('');
-    const colourPalette = [];
 
     return attempt.map((char, index) => {
         if(char === word[index]) {
-            colourPalette[index] = 'G';
+            return 'green';
         }
         else if(word.includes(char)) {
-            colourPalette[index] = 'Y';
+            return 'yellow';
         }
-        else if(!word.includes(char)) {
-            // colourPalette[index] = 
+        else if(word.includes(char) === false) {
+            return 'grey'
         }
     });
-}
+};
+
+
+export default changeColour;

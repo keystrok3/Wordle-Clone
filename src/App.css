@@ -30,3 +30,25 @@ td {
   height: 8vh;
   border: 2px solid #999999;
 }
+
+
+td.green {
+  background-color: green;
+  color: black;
+  transform: rotateY('360');
+  transition-property: background-color;
+}
+
+td.yellow {
+  background-color: yellow;
+  color: black;
+  transform: rotateY('360');
+  transition-property: background-color;
+}
+
+td.grey {
+  background-color: grey;
+  color: black;
+  transform: rotateY('360');
+  transition-property: background-color;
+}
