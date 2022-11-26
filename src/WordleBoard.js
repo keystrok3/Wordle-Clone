@@ -13,7 +13,7 @@ const WordleBoard = ({ board }) => {
             <tbody>
             {
                 board.map((word, i) => {
-                    return <WordleRow word={word} key={i} indx={i} />
+                    return <WordleRow word={word} key={i} />
                 })
             }
             </tbody>
@@ -23,7 +23,7 @@ const WordleBoard = ({ board }) => {
   };
 
 
-const WordleRow = ({ word, indx }) => {
+const WordleRow = ({ word }) => {
     
     return (
         <tr>
@@ -33,9 +33,9 @@ const WordleRow = ({ word, indx }) => {
                         <td style={
                             { 
                                 backgroundColor: data.color,
-                                borderColor: data.color,
+                                borderColor: data.color
                             }
-                            
+
                             } key={j}>
                             { data.letter }
                         </td>

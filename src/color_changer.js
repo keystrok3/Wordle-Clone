@@ -15,7 +15,7 @@ const changeColour = (correct_word, attempt) => {
             return 'green';
         }
         else if(word.includes(char)) {
-            return 'yellow';
+            return '#e4e400';
         }
         else if(word.includes(char) === false) {
             return 'grey'

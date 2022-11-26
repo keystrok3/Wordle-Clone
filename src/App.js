@@ -30,35 +30,46 @@ const App = () => {
   let current_letter = useRef(0);
 
 
-  const handleKeydown = (event) => {
+  const handleKeydown = function(event){
       if(event.key === 'Enter' && current_letter.current > 4) {
-          current_letter.current = 0;  
+        
+        if(board[attempts.current].map(data => data.letter).join('') === todaysWord) {
+          setTimeout(() => { 
+            alert('Wonderful')
+            document.removeEventListener('keydown', handleKeydown)
+           }, 1000)
 
-          let currentcolors = changeColour(todaysWord, board[attempts.current - 1].map(data => data.letter));
+        }
 
-          for(let i = 0; i < board[attempts.current - 1].length; i++) {
-            
-            board[attempts.current - 1][i].color = currentcolors[i];
-          }
+        if(current_letter.current > 4) {
+          attempts.current += 1;
+        }
 
-          setBoard(() => [ ...board ]);
+        current_letter.current = 0;  
+
+        let currentcolors = changeColour(todaysWord, board[attempts.current - 1].map(data => data.letter));
+
+        for(let i = 0; i < board[attempts.current - 1].length; i++) {
+          
+          board[attempts.current - 1][i].color = currentcolors[i];
+        }
+
+        setBoard(() => [ ...board ]);
       }
 
-      else if(event.key === 'Backspace' && current_letter.current >= 0) {
-          board[attempts.current][current_letter.current].letter = "";
-          setBoard([ ...board ]);
-          current_letter.current -= 1;
-          
-          if(current_letter.current < 0) current_letter.current = 0;
+      else if(event.key === 'Backspace' && current_letter.current > 0 && attempts.current >= 0) {
+        let currentcopy = current_letter.current - 1;
+        board[attempts.current][currentcopy].letter = "";
+        current_letter.current -= 1;
+        setBoard([ ...board ]);
+        
+        if(current_letter.current < 0) current_letter.current = 0;
       }
 
       else if(parseInt(event.keyCode) >= 65 && parseInt(event.keyCode) <= 90 && current_letter.current <= 4) {
           board[attempts.current][current_letter.current].letter = event.key.toUpperCase()
           setBoard([ ...board ])
           current_letter.current += 1;
-          if(current_letter.current > 4) {
-              attempts.current += 1;
-          }   
       }
   };
 

@@ -40,7 +40,7 @@ td.green {
 }
 
 td.yellow {
-  background-color: yellow;
+  background-color: #e4e400;
   color: black;
   transform: rotateY('360');
   transition-property: background-color;
