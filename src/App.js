@@ -37,7 +37,7 @@ const App = () => {
           setTimeout(() => { 
             alert('Wonderful')
             document.removeEventListener('keydown', handleKeydown)
-           }, 1000)
+           }, 500)
 
         }
 
